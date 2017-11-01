@@ -47,13 +47,6 @@ Add queries to your GraphQL schema
     schema = graphene.Schema(query=Query)
 
 
-Apply migrations.
-
-.. code:: python
-
-    python manage.py migrate
-
-
 .. |Pypi| image:: https://img.shields.io/pypi/v/django-graphql-countries.svg
    :target: https://pypi.python.org/pypi/django-graphql-countries
 
