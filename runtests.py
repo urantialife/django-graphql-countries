@@ -23,6 +23,9 @@ DEFAULT_SETTINGS = dict(
             'USER': os.environ.get('POSTGRES_DB_USER', 'postgres'),
             'PASSWORD': os.environ.get('POSTGRES_DB_PASSWORD', '')
         }
+    },
+    GRAPHENE={
+        'SCHEMA': 'tests.schema.schema',
     }
 )
 
