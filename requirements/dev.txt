@@ -1,0 +1,3 @@
+django-countries-flavor>=0.0.8
+django-filter>=1.0.2
+psycopg2>=2.6.2
