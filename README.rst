@@ -59,5 +59,5 @@ Add queries to your GraphQL schema
 .. |Codecov| image:: https://img.shields.io/codecov/c/github/flavors/graphql-countries.svg
    :target: https://codecov.io/gh/flavors/graphql-countries
 
-.. |Code Climate| image:: https://codeclimate.com/github/flavors/graphql-countries/badges/gpa.svg
+.. |Code Climate| image:: https://api.codeclimate.com/v1/badges/5c5f19adc7739cd22c6f/maintainability
    :target: https://codeclimate.com/github/flavors/graphql-countries
