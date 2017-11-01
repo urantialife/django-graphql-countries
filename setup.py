@@ -29,7 +29,8 @@ setup(
     packages=find_packages(exclude=['tests*']),
     install_requires=[
         'Django>=1.11',
-        'django-countries-flavor>=0.0.8'
+        'django-countries-flavor>=0.0.8',
+        'graphene-django>=2.0.0'
     ],
     classifiers=[
         'Development Status :: 1 - Planning',
@@ -50,6 +51,7 @@ setup(
         'coverage>=4.4',
         'django-countries-flavor>=0.0.8',
         'factory-boy>=2.8.1',
-        'Faker>=0.7.11'
+        'Faker>=0.7.11',
+        'graphene-django>=2.0.0'
     ]
 )
