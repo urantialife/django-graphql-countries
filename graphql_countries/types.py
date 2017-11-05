@@ -1,10 +1,11 @@
 import json
 import graphene
 
+from graphene.types.generic import GenericScalar
 from .utils import dashed_to_camel
 
 
-class CamelJSON(graphene.JSONString):
+class CamelJSON(GenericScalar):
 
     @classmethod
     def serialize(cls, value):
