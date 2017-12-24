@@ -15,7 +15,7 @@ class CurrencyNode(DjangoObjectType):
             'code': lookups.CHOICES_LOOKUPS,
             'numeric': lookups.CHOICES_LOOKUPS,
             'name': lookups.TEXT_LOOKUPS,
-            'full_name': lookups.TEXT_LOOKUPS
+            'full_name': lookups.TEXT_LOOKUPS,
         }
 
 
@@ -27,7 +27,7 @@ class LanguageNode(DjangoObjectType):
         filter_fields = {
             'name': lookups.TEXT_LOOKUPS,
             'cla2': lookups.CHOICES_LOOKUPS,
-            'cla3': lookups.CHOICES_LOOKUPS
+            'cla3': lookups.CHOICES_LOOKUPS,
         }
 
 
@@ -37,7 +37,7 @@ class TimezoneNode(DjangoObjectType):
         model = models.Timezone
         interfaces = [relay.Node]
         filter_fields = {
-            'name': lookups.TEXT_LOOKUPS
+            'name': lookups.TEXT_LOOKUPS,
         }
 
 
@@ -48,7 +48,7 @@ class ContinentNode(DjangoObjectType):
         interfaces = [relay.Node]
         filter_fields = {
             'code': lookups.CHOICES_LOOKUPS,
-            'name': lookups.TEXT_LOOKUPS
+            'name': lookups.TEXT_LOOKUPS,
         }
 
 
@@ -62,7 +62,7 @@ class LocaleNode(DjangoObjectType):
             'code': lookups.CHOICES_LOOKUPS,
             'country__cca2':  lookups.CHOICES_LOOKUPS,
             'language__cla2':  lookups.CHOICES_LOOKUPS,
-            'language__cla3':  lookups.CHOICES_LOOKUPS
+            'language__cla3':  lookups.CHOICES_LOOKUPS,
         }
 
 
@@ -75,7 +75,7 @@ class CountryNameNode(DjangoObjectType):
             'common': lookups.TEXT_LOOKUPS,
             'official':  lookups.TEXT_LOOKUPS,
             'language__cla2':  lookups.CHOICES_LOOKUPS,
-            'language__cla3':  lookups.CHOICES_LOOKUPS
+            'language__cla3':  lookups.CHOICES_LOOKUPS,
         }
 
 
@@ -97,5 +97,5 @@ class CountryNode(DjangoObjectType):
             'currencies__code':  lookups.CHOICES_LOOKUPS,
             'languages__cla3':  lookups.CHOICES_LOOKUPS,
             'languages__cla2':  lookups.CHOICES_LOOKUPS,
-            'timezones__name':  lookups.TEXT_LOOKUPS
+            'timezones__name':  lookups.TEXT_LOOKUPS,
         }

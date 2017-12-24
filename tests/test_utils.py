@@ -8,8 +8,8 @@ class UtilsTests(TestCase):
     def test_to_camel(self):
         camel = utils.dashed_to_camel({
             'test_foo': {
-                'test_bar': True
-            }
+                'test_bar': True,
+            },
         })
 
         self.assertTrue(camel['testFoo']['testBar'])
