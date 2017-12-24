@@ -1,10 +1,9 @@
 from graphene import relay
-
-from countries import models
 from graphene_django.types import DjangoObjectType
 
-from . import lookups
-from . import types
+from countries import models
+
+from . import lookups, types
 
 
 class CurrencyNode(DjangoObjectType):

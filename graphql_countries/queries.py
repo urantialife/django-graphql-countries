@@ -1,7 +1,7 @@
 from graphene import relay
+from graphene_django.filter import DjangoFilterConnectionField
 
 from countries import models
-from graphene_django.filter import DjangoFilterConnectionField
 
 from . import nodes
 

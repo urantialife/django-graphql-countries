@@ -1,4 +1,5 @@
 from django.test import Client, RequestFactory, testcases
+
 from graphene_django.settings import graphene_settings
 
 

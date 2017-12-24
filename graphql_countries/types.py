@@ -1,7 +1,8 @@
 import json
-import graphene
 
+import graphene
 from graphene.types.generic import GenericScalar
+
 from .utils import dashed_to_camel
 
 
