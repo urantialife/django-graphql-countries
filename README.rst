@@ -9,7 +9,7 @@ GraphQL implementation for countries
 Dependencies
 ------------
 
-* Python ≥ 3.4
+* Python ≥ 3.5
 * Django ≥ 1.11
 * Postgres
 
@@ -28,11 +28,11 @@ Add ``countries`` to your INSTALLED_APPS setting.
 
 .. code:: python
 
-    INSTALLED_APPS = (
+    INSTALLED_APPS = [
         ...
         'django_filters',
-        'countries.apps.CountriesAppConfig'
-    )
+        'countries.apps.CountriesAppConfig',
+    ]
 
 Add queries to your GraphQL schema
 
