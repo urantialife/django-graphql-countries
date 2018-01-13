@@ -25,7 +25,7 @@ setup(
     author='mongkok',
     author_email='domake.io@gmail.com',
     maintainer='mongkok',
-    url='https://github.com/flavors/graphql-countries/',
+    url='https://github.com/flavors/django-graphql-countries/',
     packages=find_packages(exclude=['tests*']),
     install_requires=[
         'Django>=1.11',
