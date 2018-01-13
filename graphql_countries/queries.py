@@ -9,7 +9,6 @@ from . import nodes
 class Query(object):
     country = relay.Node.Field(nodes.CountryNode)
     countries = DjangoFilterConnectionField(nodes.CountryNode)
-
     languages = DjangoFilterConnectionField(nodes.LanguageNode)
     locales = DjangoFilterConnectionField(nodes.LocaleNode)
     timezones = DjangoFilterConnectionField(nodes.TimezoneNode)
