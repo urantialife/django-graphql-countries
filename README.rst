@@ -62,5 +62,5 @@ Add queries to your GraphQL schema
 .. |Codecov| image:: https://img.shields.io/codecov/c/github/flavors/django-graphql-countries.svg
    :target: https://codecov.io/gh/flavors/django-graphql-countries
 
-.. |Code Climate| image:: https://api.codeclimate.com/v1/badges/5c5f19adc7739cd22c6f/maintainability
+.. |Code Climate| image:: https://api.codeclimate.com/v1/badges/909e7331eb1c43e92a46/maintainability
    :target: https://codeclimate.com/github/flavors/django-graphql-countries
