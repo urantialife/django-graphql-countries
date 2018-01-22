@@ -1,9 +1,9 @@
 from countries import factories as countries_factories
 
-from .base import GQLTestCase
+from .testcases import GraphQLTestCase
 
 
-class QueriesTests(GQLTestCase):
+class QueriesTests(GraphQLTestCase):
 
     def test_countries(self):
         country = countries_factories.CountryFactory()
