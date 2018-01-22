@@ -81,13 +81,10 @@ class CountryNameNode(DjangoObjectType):
 
 class CountryNode(DjangoObjectType):
     extra = types.CamelJSON()
-    location = types.GeoJSON()
-    mpoly = types.GeoJSON()
 
     class Meta:
         model = models.Country
         interfaces = [relay.Node]
-        exclude_fields = ['location', 'mpoly']
         filter_fields = {
             'cca2': lookups.CHOICES_LOOKUPS,
             'cca3': lookups.CHOICES_LOOKUPS,
