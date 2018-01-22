@@ -4,9 +4,11 @@ Django GraphQL Countries
 |Pypi| |Wheel| |Build Status| |Codecov| |Code Climate|
 
 
-GraphQL implementation for `Countries`_
+`Countries`_ support for `Django GraphQL`_ and `Relay`_
 
-.. _countries: https://github.com/flavors/django-countries/
+.. _Countries: https://github.com/flavors/django-countries/
+.. _Django GraphQL: https://github.com/graphql-python/graphene-django
+.. _Relay: https://facebook.github.io/relay/
 
 
 Dependencies
@@ -27,15 +29,35 @@ Install last stable version from Pypi.
     pip install django-graphql-countries
 
 
-Add ``countries`` to your *INSTALLED_APPS* setting.
+Add ``countries`` to your *INSTALLED_APPS* settings:
 
 .. code:: python
 
     INSTALLED_APPS = [
         ...
-        'django_filters',
         'countries.apps.CountriesAppConfig',
     ]
+
+
+Apply **migrations**:
+
+.. code:: python
+
+    python manage.py migrate
+
+
+Load data
+---------
+
+The ``loadcountries`` management command read all **fixtures** and re-loaded into the database:
+
+.. code:: sh
+
+    python manage.py loadcountries
+
+
+Schema
+------
 
 Add queries to your GraphQL schema
 
@@ -44,10 +66,34 @@ Add queries to your GraphQL schema
     import graphene
     import graphql_countries
 
+
     class Query(graphene.ObjectType, graphql_countries.Query):
-        pass
+        """GraphQL Queries"""
+
 
     schema = graphene.Schema(query=Query)
+
+
+GeoJSON query
+-------------
+
+GeoJSON outlines for 🇻🇳Vietnam:
+
+.. code:: graphql
+
+    query {
+      countries(cca2: "VN") {
+        edges {
+          node {
+            cca2
+            mpoly {
+              type
+              coordinates
+            }
+          }
+        }
+      }
+    }
 
 
 .. |Pypi| image:: https://img.shields.io/pypi/v/django-graphql-countries.svg
