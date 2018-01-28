@@ -73,8 +73,7 @@ Add queries to your GraphQL schema
     schema = graphene.Schema(query=Query)
 
 
-GeoJSON query
--------------
+**Query**
 
 Countries *GeoJSON* **outlines**:
 
@@ -111,8 +110,7 @@ Complete support for `Relay`_.
     schema = graphene.Schema(query=Query)
 
 
-GeoJSON query
--------------
+**Query**
 
 *GeoJSON* **outlines** for 🇻🇳 Vietnam:
 
