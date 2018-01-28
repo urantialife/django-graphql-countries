@@ -1,6 +1,7 @@
 import os
 
 INSTALLED_APPS = [
+    'django.contrib.contenttypes',
     'countries.apps.CountriesAppConfig',
 ]
 
