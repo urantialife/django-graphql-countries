@@ -2,6 +2,8 @@
 engines:
   duplication:
     enabled: true
+    exclude_paths:
+    - "graphql_countries/relay/nodes.py"
     config:
       languages:
       - python
