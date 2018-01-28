@@ -14,7 +14,7 @@ Django GraphQL Countries
 Dependencies
 ------------
 
-* Python ≥ 3.5
+* Python ≥ 3.4
 * Django ≥ 1.11
 * PostGIS database (PostgreSQL ≥ 9.4)
 
