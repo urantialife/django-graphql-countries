@@ -1,26 +1,23 @@
-from graphene import relay
-from graphene_django.filter import DjangoFilterConnectionField
+import graphene
 
 from countries import models
 
-from . import nodes
+from . import mixins, types
 
 
-class Query(object):
-    country = relay.Node.Field(nodes.CountryNode)
-    countries = DjangoFilterConnectionField(nodes.CountryNode)
-    languages = DjangoFilterConnectionField(nodes.LanguageNode)
-    locales = DjangoFilterConnectionField(nodes.LocaleNode)
-    timezones = DjangoFilterConnectionField(nodes.TimezoneNode)
+class Query(mixins.QueryResolveMixin):
+    country = graphene.Field(
+        types.CountryType,
+        cca2=graphene.String(required=True))
 
-    def resolve_countries(self, info, **kwargs):
-        return models.Country.objects.all()
+    countries = graphene.List(types.CountryType)
+    languages = graphene.List(types.LanguageType)
+    locales = graphene.List(types.LocaleType)
+    timezones = graphene.List(types.TimezoneType)
 
-    def resolve_languages(self, info, **kwargs):
-        return models.Language.objects.all()
-
-    def resolve_locales(self, info, **kwargs):
-        return models.Locale.objects.all()
-
-    def resolve_timezones(self, info, **kwargs):
-        return models.Timezone.objects.all()
+    def resolve_country(self, info, **kwargs):
+        try:
+            country = models.Country.objects.get(**kwargs)
+        except models.Country.DoesNotExist:
+            return None
+        return country
