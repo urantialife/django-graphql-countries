@@ -1,20 +1,27 @@
 from django.test import Client, RequestFactory, testcases
 
-from graphene_django.settings import graphene_settings
+import graphene
 
 
 class GraphQLRequestFactory(RequestFactory):
 
-    def execute(self, query, **kwargs):
-        return self.schema.execute(query, variable_values=kwargs)
+    def execute(self, query, **variables):
+        return self._schema.execute(query, variable_values=variables)
 
 
 class GraphQLClient(GraphQLRequestFactory, Client):
 
     def __init__(self, **defaults):
         super().__init__(**defaults)
-        self.schema = graphene_settings.SCHEMA
+        self._schema = None
+
+    def schema(self, **kwargs):
+        self._schema = graphene.Schema(**kwargs)
 
 
 class GraphQLTestCase(testcases.TestCase):
     client_class = GraphQLClient
+    Query = None
+
+    def setUp(self):
+        self.client.schema(query=self.Query)

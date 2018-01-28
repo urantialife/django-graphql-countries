@@ -1,10 +1,7 @@
 import os
 
 INSTALLED_APPS = [
-    'django.contrib.contenttypes',
-    'django_filters',
     'countries.apps.CountriesAppConfig',
-    'tests',
 ]
 
 DATABASES = {
@@ -17,7 +14,3 @@ DATABASES = {
 }
 
 SECRET_KEY = 'test'
-
-GRAPHENE = {
-    'SCHEMA': 'tests.schema.schema',
-}

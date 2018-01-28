@@ -1,3 +1,6 @@
+import graphene
+
+import graphql_countries
 from countries import factories as countries_factories
 
 from .testcases import GraphQLTestCase
@@ -5,70 +8,81 @@ from .testcases import GraphQLTestCase
 
 class QueriesTests(GraphQLTestCase):
 
+    class Query(graphene.ObjectType, graphql_countries.Query):
+        """Queries"""
+
     def test_countries(self):
+        countries_factories.CountryFactory()
+
+        query = '''
+        {
+          countries {
+            cca2
+          }
+        }'''
+
+        response = self.client.execute(query)
+        self.assertTrue(response.data['countries'])
+
+    def test_country(self):
         country = countries_factories.CountryFactory()
 
         query = '''
-        query CountryList($cca2: String!) {
-          countries(cca2: $cca2) {
-            edges {
-              node {
-                cca2
-              }
-            }
+        query Country($cca2: String!) {
+          country(cca2: $cca2) {
+            cca2
           }
         }'''
 
         response = self.client.execute(query, cca2=country.cca2)
-        self.assertTrue(response.data['countries']['edges'])
+        self.assertEqual(response.data['country']['cca2'], country.cca2)
+
+    def test_country_not_found(self):
+        query = '''
+        {
+          country(cca2: "not_found") {
+            cca2
+          }
+        }'''
+
+        response = self.client.execute(query)
+        self.assertIsNone(response.data['country'])
 
     def test_languages(self):
-        language = countries_factories.LanguageFactory()
+        countries_factories.LanguageFactory()
 
         query = '''
-        query LanguageList($cla3: String!) {
-          languages(cla3: $cla3) {
-            edges {
-              node {
-                cla3
-              }
-            }
+        {
+          languages {
+            cla3
           }
         }'''
 
-        response = self.client.execute(query, cla3=language.cla3)
-        self.assertTrue(response.data['languages']['edges'])
+        response = self.client.execute(query)
+        self.assertTrue(response.data['languages'])
 
     def test_locales(self):
-        locale = countries_factories.LocaleFactory()
+        countries_factories.LocaleFactory()
 
         query = '''
-        query LocaleList($code: String!) {
-          locales(code: $code) {
-            edges {
-              node {
-                code
-              }
-            }
+        {
+          locales {
+            code
           }
         }'''
 
-        response = self.client.execute(query, code=locale.code)
-        self.assertTrue(response.data['locales']['edges'])
+        response = self.client.execute(query)
+        self.assertTrue(response.data['locales'])
 
     def test_timezones(self):
-        timezone = countries_factories.TimezoneFactory()
+        countries_factories.TimezoneFactory()
 
         query = '''
-        query TimezoneList($name: String!) {
-          timezones(name: $name) {
-            edges {
-              node {
-                name
-              }
-            }
+        {
+          timezones {
+            name
           }
         }'''
 
-        response = self.client.execute(query, name=timezone.name)
-        self.assertTrue(response.data['timezones']['edges'])
+        response = self.client.execute(query)
+        self.assertTrue(response.data['timezones'])
