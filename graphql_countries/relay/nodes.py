@@ -3,7 +3,7 @@ from graphene_django.types import DjangoObjectType
 
 from countries import models
 
-from . import lookups, types
+from . import lookups
 
 
 class CurrencyNode(DjangoObjectType):
@@ -53,7 +53,6 @@ class ContinentNode(DjangoObjectType):
 
 
 class LocaleNode(DjangoObjectType):
-    extra = types.CamelJSON()
 
     class Meta:
         model = models.Locale
@@ -80,7 +79,6 @@ class CountryNameNode(DjangoObjectType):
 
 
 class CountryNode(DjangoObjectType):
-    extra = types.CamelJSON()
 
     class Meta:
         model = models.Country
