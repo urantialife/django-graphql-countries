@@ -4,11 +4,10 @@ Django GraphQL Countries
 |Pypi| |Wheel| |Build Status| |Codecov| |Code Climate|
 
 
-`Countries`_ support for `Django GraphQL`_ and `Relay`_
+`Countries`_ support for `Django GraphQL`_
 
 .. _Countries: https://github.com/flavors/django-countries/
 .. _Django GraphQL: https://github.com/graphql-python/graphene-django
-.. _Relay: https://facebook.github.io/relay/
 
 
 Dependencies
@@ -77,7 +76,45 @@ Add queries to your GraphQL schema
 GeoJSON query
 -------------
 
-GeoJSON outlines for 🇻🇳Vietnam:
+Countries *GeoJSON* **outlines**:
+
+.. code:: graphql
+
+    query {
+      countries {
+        capital
+        mpoly {
+          type
+          coordinates
+        }
+      }
+    }
+
+
+Relay
+-----
+
+Complete support for `Relay`_.
+
+.. _Relay: https://facebook.github.io/relay/
+
+.. code:: python
+
+    import graphene
+    import graphql_countries
+
+
+    class Query(graphene.ObjectType, graphql_countries.relay.Query):
+        """Relay Queries"""
+
+
+    schema = graphene.Schema(query=Query)
+
+
+GeoJSON query
+-------------
+
+*GeoJSON* **outlines** for 🇻🇳 Vietnam:
 
 .. code:: graphql
 
@@ -85,7 +122,7 @@ GeoJSON outlines for 🇻🇳Vietnam:
       countries(cca2: "VN") {
         edges {
           node {
-            cca2
+            capital
             mpoly {
               type
               coordinates
