@@ -82,7 +82,7 @@ Countries *GeoJSON* **outlines**:
     query {
       countries {
         capital
-        mpoly {
+        outlines {
           type
           coordinates
         }
@@ -121,7 +121,7 @@ Complete support for `Relay`_.
         edges {
           node {
             capital
-            mpoly {
+            outlines {
               type
               coordinates
             }
