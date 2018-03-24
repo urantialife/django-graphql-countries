@@ -8,7 +8,7 @@ help:
 
 
 test:
-	@pytest tests --pdb --flake8
+	@pytest tests
 
 coverage:
 	@pytest\
@@ -17,8 +17,7 @@ coverage:
 		--cov graphql_countries\
 		--cov-config .coveragerc\
 		--cov-report term\
-		--cov-report xml\
-		tests
+		--cov-report xml
 
 test-all:
 	@tox
